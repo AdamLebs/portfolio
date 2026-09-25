@@ -610,12 +610,16 @@ button {
 }
 
 .score-card strong {
-  margin: 10px 0;
-  font-size: 42px;
-  letter-spacing: -.04em;
-   background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  display: block;
+  color: #ffffff !important;
+  font-size: 32px;
+  font-weight: 700;
+  opacity: 1 !important;
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 .score-card small {
@@ -713,10 +717,15 @@ button {
 }
 
 .metric-grid strong {
+  display: block;
   font-size: 21px;
-  color: #dce1e9;
+  font-weight: 700;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: none !important;
+  background-image: none !important;
 }
-
 /* Results */
 
 .project-subsection h4 {
@@ -1328,5 +1337,26 @@ button {
     flex-direction: column;
     gap: 15px;
     justify-content: center;
+  }
+}
+
+.score-card .f1-score {
+  display: block;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-size: 32px;
+  font-weight: 700;
+  opacity: 1 !important;
+}
+
+@keyframes scoreReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

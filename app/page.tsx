@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const skills = [
   {
@@ -115,6 +115,31 @@ const languages = [
 ];
 
 export default function Home() {
+const [f1Score, setF1Score] = useState(0);
+
+useEffect(() => {
+  const target = 98.83;
+  const duration = 4000;
+  const startTime = Date.now();
+
+  const timer = setInterval(() => {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    // Smooth ease-out
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = target * eased;
+
+    setF1Score(current);
+
+    if (progress >= 1) {
+      clearInterval(timer);
+      setF1Score(target);
+    }
+  }, 30);
+
+  return () => clearInterval(timer);
+}, []);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -367,11 +392,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="score-card">
-              <span>F1 SCORE</span>
-              <strong>98.83%</strong>
-              <small>Final experimental result</small>
-            </div>
+           
+          <div className="score-card">
+            <span>F1 SCORE</span>
+            <strong className="f1-score">98.83%</strong>
+            <small>Final experimental result</small>
+          </div>
 
           </div>
 
